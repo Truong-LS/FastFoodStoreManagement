@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace View.View
+namespace View
 {
     /// <summary>
     /// Interaction logic for MenuManager.xaml

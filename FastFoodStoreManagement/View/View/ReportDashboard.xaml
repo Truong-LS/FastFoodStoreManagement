@@ -1,4 +1,4 @@
-﻿<Window x:Class="View.View.ReportDashboard"
+﻿<Window x:Class="View.ReportDashboard"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Report Dashboard" Height="700" Width="1100" WindowStartupLocation="CenterScreen">
