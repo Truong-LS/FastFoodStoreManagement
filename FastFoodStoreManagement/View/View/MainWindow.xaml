@@ -7,6 +7,44 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <!-- menu -->
+            <RowDefinition Height="*"/>
+            <!-- content động -->
+        </Grid.RowDefinitions>
 
+        <!-- ==== PHẦN MENU ==== -->
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" Background="#FF5B5B">
+                <TextBlock Text="Logo" Foreground="White"
+                           VerticalAlignment="Center" HorizontalAlignment="Center"
+                           FontSize="16" FontWeight="Bold"/>
+            </Border>
+
+            <Button Grid.Column="1" Content="Shift Management"
+                    Background="White" BorderBrush="LightGray"
+                    Click="BtnShift_Click"/>
+            <Button Grid.Column="2" Content="Coupon Management"
+                    Background="#FFEFA0" BorderBrush="LightGray"
+                    Click="BtnCoupon_Click"/>
+            <Button Grid.Column="3" Content="Stock Management" Background="#FFEFA0" BorderBrush="LightGray"/>
+            <Button Grid.Column="4" Content="Nhập kho / Xuất kho" Background="#FFEFA0" BorderBrush="LightGray"/>
+            <Button Grid.Column="5" Content="Report" Background="#FFEFA0" BorderBrush="LightGray"/>
+            <Button Grid.Column="6" Content="Menu Manager" Background="#FFEFA0" BorderBrush="LightGray"/>
+        </Grid>
+
+        <!-- ==== NƠI HIỂN THỊ NỘI DUNG ĐỘNG ==== -->
+        <ContentControl x:Name="MainContent" Grid.Row="1"/>
     </Grid>
 </Window>
