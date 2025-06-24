@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace View.StockManagement.Control
+namespace View.ManagerView
 {
     /// <summary>
-    /// Interaction logic for StockManagementControl.xaml
+    /// Interaction logic for AccountManagement.xaml
     /// </summary>
-    public partial class StockManagementControl : UserControl
+    public partial class AccountManagement : Window
     {
-        public StockManagementControl()
+        public AccountManagement()
         {
             InitializeComponent();
         }

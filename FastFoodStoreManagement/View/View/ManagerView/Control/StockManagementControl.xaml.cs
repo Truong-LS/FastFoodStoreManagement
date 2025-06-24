@@ -13,21 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace View.StockManagement.Control
+namespace View.ManagerView.Control
 {
     /// <summary>
-    /// Interaction logic for StockInStockOutControl.xaml
+    /// Interaction logic for StockManagementControl.xaml
     /// </summary>
-    public partial class StockInStockOutControl : UserControl
+    public partial class StockManagementControl : UserControl
     {
-        public StockInStockOutControl()
+        public StockManagementControl()
         {
             InitializeComponent();
-        }
-
-        private void CreateButton_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

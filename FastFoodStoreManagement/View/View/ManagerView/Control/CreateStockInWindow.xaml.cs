@@ -11,28 +11,28 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using View.StockManagement.Control;
 
-namespace View.StockManagement
+namespace View.ManagerView.Control
 {
     /// <summary>
-    /// Interaction logic for StockMangementWIndow.xaml
+    /// Interaction logic for CreateStockInWindow.xaml
     /// </summary>
-    public partial class StaffMainWindow : Window
+    public partial class CreateStockInWindow : Window
     {
-        public StaffMainWindow()
+        public CreateStockInWindow()
         {
             InitializeComponent();
         }
 
-        private void StockManagementButton_Click(object sender, RoutedEventArgs e)
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            MainContent.Content = new StockManagementControl();
+
         }
 
-        private void StockInStockOutButton_Click(object sender, RoutedEventArgs e)
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            MainContent.Content = new StockInStockOutControl();
+            this.DialogResult = false;
+            this.Close();
         }
     }
 }

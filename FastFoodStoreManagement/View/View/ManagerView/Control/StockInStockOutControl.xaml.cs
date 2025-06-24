@@ -10,29 +10,24 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace View.StockManagement.Control
+namespace View.ManagerView.Control
 {
     /// <summary>
-    /// Interaction logic for CreateStockInWindow.xaml
+    /// Interaction logic for StockInStockOutControl.xaml
     /// </summary>
-    public partial class CreateStockInWindow : Window
+    public partial class StockInStockOutControl : UserControl
     {
-        public CreateStockInWindow()
+        public StockInStockOutControl()
         {
             InitializeComponent();
         }
 
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        private void CreateButton_Click(object sender, RoutedEventArgs e)
         {
 
-        }
-
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.DialogResult = false;
-            this.Close();
         }
     }
 }

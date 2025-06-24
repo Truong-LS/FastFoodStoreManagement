@@ -59,8 +59,8 @@
             <Image></Image>
             <Button Content="Shiff Management" Style="{StaticResource GoldButtonStyle}" />
             <Button Content="Coupon Management" Style="{StaticResource GoldButtonStyle}" />
-            <Button Content="Stock Management" Style="{StaticResource GoldButtonStyle}" Click="StockManagementButton_Click"/>
-            <Button Content="Stock In/Stock Out" Style="{StaticResource GoldButtonStyle}" Click="StockInStockOutButton_Click"/>
+            <Button Content="Stock Management" Style="{StaticResource GoldButtonStyle}" />
+            <Button Content="Stock In/Stock Out" Style="{StaticResource GoldButtonStyle}" />
             <Button Content="Report" Style="{StaticResource GoldButtonStyle}" />
         </StackPanel>
         

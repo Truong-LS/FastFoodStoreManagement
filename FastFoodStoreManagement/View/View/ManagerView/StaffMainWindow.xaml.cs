@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using View.StockManagement.Control;
+using View.ManagerView.Control;
 
 namespace View.ManagerView
 {
@@ -20,19 +20,9 @@ namespace View.ManagerView
     /// </summary>
     public partial class StaffMainWindow : Window
     {
-        public StaffMainWindow()
+        public void StaffMainWindowD()
         {
             InitializeComponent();
-        }
-
-        private void StockManagementButton_Click(object sender, RoutedEventArgs e)
-        {
-            MainContent.Content = new StockManagementControl();
-        }
-
-        private void StockInStockOutButton_Click(object sender, RoutedEventArgs e)
-        {
-            MainContent.Content = new StockInStockOutControl();
         }
     }
 }
