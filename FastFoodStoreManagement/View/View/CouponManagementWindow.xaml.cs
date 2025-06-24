@@ -17,34 +17,29 @@ namespace View
     /// <summary>
     /// Interaction logic for CouponManagementWindow.xaml
     /// </summary>
-    public partial class CouponManagementWindow : Window
+    public partial class CouponManagementWindow : UserControl
     {
         public CouponManagementWindow()
         {
             InitializeComponent();
         }
 
-        private void BtnShift_Click(object sender, RoutedEventArgs e)
-        {
-            MainContent.Content = new ShiffManagementWindow();
-        }
+        //private void BtnShift_Click(object sender, RoutedEventArgs e)
+        //{
+        //    MainContent.Content = new ShiffManagementWindow();
+        //}
 
-        private void BtnCoupon_Click(object sender, RoutedEventArgs e)
-        {
-            MainContent.Content = new CouponManagementWindow();
-        }
+        //private void BtnCoupon_Click(object sender, RoutedEventArgs e)
+        //{
+        //    MainContent.Content = new CouponManagementWindow();
+        //}
 
         private void Create_Click(object sender, RoutedEventArgs e)
         {
-            var dlg = new CreateCouponWindow
+            var dlg = new CreateCouponWindow { Owner = Window.GetWindow(this) };
+            if (dlg.ShowDialog() == true)
             {
-                Owner = this
-            };
-            bool? result = dlg.ShowDialog();
-            if (result == true)
-            {
-                // Người dùng bấm Create trong dialog
-                // Load lại DataGrid hoặc feedback
+                // reload data nếu cần
             }
         }
     }

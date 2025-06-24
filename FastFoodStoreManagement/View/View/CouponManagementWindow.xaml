@@ -1,11 +1,11 @@
-﻿<Window x:Class="View.CouponManagementWindow"
+﻿<UserControl x:Class="View.CouponManagementWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
-        Title="CouponManagementWindow" Height="450" Width="800">
+        Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="80"/>
@@ -14,37 +14,13 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!-- 1) Thanh menu -->
-        <Grid Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="150"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
 
-            <Border Grid.Column="0" Background="#FF5B5B">
-                <TextBlock Text="Logo" Foreground="White"
-                       VerticalAlignment="Center" HorizontalAlignment="Center"
-                       FontSize="16" FontWeight="Bold"/>
-            </Border>
 
-            <Button Grid.Column="1" Content="Shift Management" Background="#FFEFA0" BorderBrush="LightGray" Click="BtnShift_Click"/>
-            <Button Grid.Column="2" Content="Coupon Management" Background="White" BorderBrush="LightGray" Click="BtnCoupon_Click"/>
-            <Button Grid.Column="3" Content="Stock Management" Background="#FFEFA0" BorderBrush="LightGray"/>
-            <Button Grid.Column="4" Content="Nhập kho / Xuất kho" Background="#FFEFA0" BorderBrush="LightGray"/>
-            <Button Grid.Column="5" Content="Report" Background="#FFEFA0" BorderBrush="LightGray"/>
-            <Button Grid.Column="6" Content="Menu Manager" Background="#FFEFA0" BorderBrush="LightGray"/>
-        </Grid>
 
-       
 
         <!-- 3) DataGrid hiển thị nhân viên -->
-        <DataGrid Grid.Row="2" Margin="20" AutoGenerateColumns="False" CanUserAddRows="False"
-              ItemsSource="{Binding Employees}">
+        <DataGrid Margin="20,10,20,242" AutoGenerateColumns="False" CanUserAddRows="False"
+              ItemsSource="{Binding Employees}" Grid.RowSpan="3">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Mã Coupon" Binding="{Binding MaCoupon}" Width="100"/>
                 <DataGridTextColumn Header="Ngày tạo" Binding="{Binding NgayTao}" Width="100"/>
@@ -64,11 +40,9 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <ContentControl x:Name="MainContent" Grid.Row="2" />
-
         <!-- 4) Nút Create -->
-        <Button Grid.Row="3" Content="Create" Width="100" Height="35" Margin="20"
+        <Button Grid.Row="2" Content="Create" Width="100" Height="35" Margin="20,145,0,190"
     HorizontalAlignment="Left"
     Click="Create_Click"/>
     </Grid>
-</Window>
+</UserControl>
