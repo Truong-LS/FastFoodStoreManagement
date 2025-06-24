@@ -19,6 +19,17 @@ namespace View
         public MainWindow()
         {
             InitializeComponent();
+            MainContent.Content = new ShiffManagementWindow();
+        }
+
+        private void BtnShift_Click(object sender, RoutedEventArgs e)
+        {
+            MainContent.Content = new ShiffManagementWindow();
+        }
+
+        private void BtnCoupon_Click(object sender, RoutedEventArgs e)
+        {
+            MainContent.Content = new CouponManagementWindow();
         }
     }
 }
