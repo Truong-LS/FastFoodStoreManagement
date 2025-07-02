@@ -25,9 +25,24 @@ namespace View.ManagerView.Control
             InitializeComponent();
         }
 
-        private void CreateButton_Click(object sender, RoutedEventArgs e)
-        {
 
+        private void OpenPopup_Click(object sender, RoutedEventArgs e)
+        {
+            CreatePopup.IsOpen = true;
+        }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            CreatePopup.IsOpen = false;
+        }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Thêm xử lý lưu dữ liệu ở đây...
+            MessageBox.Show("Đã lưu sản phẩm");
+
+            // Tắt popup sau khi lưu
+            CreatePopup.IsOpen = false;
         }
     }
 }
