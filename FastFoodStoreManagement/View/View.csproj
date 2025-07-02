@@ -9,18 +9,33 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Images\Logo\9110796_x_icon.png" />
+    <Compile Remove="ViewModel\**" />
+    <EmbeddedResource Remove="ViewModel\**" />
+    <None Remove="ViewModel\**" />
+    <Page Remove="ViewModel\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Images\Logo\9110796_x_icon.png">
+    <None Remove="Images\Logo\9110796_x_icon.png" />
+    <None Remove="Image\1.jpg" />
+    <None Remove="Image\10.jpg" />
+    <None Remove="Image\Logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Image\1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\10.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\Logo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Images\Items\" />
-    <Folder Include="ViewModel\" />
   </ItemGroup>
 
   <ItemGroup>
