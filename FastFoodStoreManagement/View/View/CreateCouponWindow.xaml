@@ -1,0 +1,74 @@
+﻿<Window x:Class="View.CreateCouponWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:View"
+        mc:Ignorable="d"
+        Title="CreateCouponWindow" Height="450" Width="800">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <!-- Header -->
+            <RowDefinition Height="Auto"/>
+            <!-- MãNV -->
+            <RowDefinition Height="Auto"/>
+            <!-- TênNV -->
+            <RowDefinition Height="Auto"/>
+            <!-- Ngày -->
+            <RowDefinition Height="Auto"/>
+            <!-- Ca làm -->
+            <RowDefinition Height="*"/>
+            <!-- Spacer -->
+            <RowDefinition Height="Auto"/>
+            <!-- Button -->
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Grid.Row="0" Background="#FF5B5B" CornerRadius="8">
+            <TextBlock Text="create coupon"
+                   VerticalAlignment="Center" HorizontalAlignment="Center"
+                   FontSize="16" FontWeight="SemiBold"/>
+        </Border>
+
+        <!-- Mã Coupon -->
+        <StackPanel Grid.Row="1" Margin="0,10,0,0">
+            <TextBlock Text="Mã Coupon" Margin="0,0,0,4"/>
+            <TextBox x:Name="TxtMaCoupon" Height="30"/>
+        </StackPanel>
+
+        <!-- Ngày tạo -->
+        <StackPanel Grid.Row="2" Margin="0,10,0,0">
+            <TextBlock Text="Ngày tạo" Margin="0,0,0,4"/>
+            <DatePicker x:Name="DpNgayTao" Height="30"/>
+        </StackPanel>
+
+        <!-- Ngày hết hạn -->
+        <StackPanel Grid.Row="3" Margin="0,10,0,0">
+            <TextBlock Text="Ngày" Margin="0,0,0,4"/>
+            <DatePicker x:Name="DpNgayHetHan" Height="30"/>
+        </StackPanel>
+
+        <!-- Loại -->
+        <StackPanel Grid.Row="4" Margin="0,10,0,0">
+            <TextBlock Text="Loại" Margin="0,0,0,4"/>
+            <ComboBox x:Name="CboLoai" Height="30" SelectedIndex="0">
+                <ComboBoxItem Content="Rau củ"/>
+                <ComboBoxItem Content="Combo gà"/>
+                <ComboBoxItem Content="Kem"/>
+            </ComboBox>
+        </StackPanel>
+
+        <!-- Giá trị -->
+        <StackPanel Grid.Row="5" Margin="0,10,0,0">
+            <TextBlock Text="Giá trị" Margin="0,0,0,4"/>
+            <TextBox x:Name="TxtGiaTri" Height="20"/>
+        </StackPanel>
+
+        <!-- Create button -->
+        <Button Grid.Row="6" Content="Create" Width="100" Height="30"
+            HorizontalAlignment="Center"
+            Click="BtnCreate_Click"
+            Background="#B26AF6" Foreground="White"/>
+    </Grid>
+</Window>

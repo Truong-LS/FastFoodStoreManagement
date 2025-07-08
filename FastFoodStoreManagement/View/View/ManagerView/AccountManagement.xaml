@@ -5,9 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View.ManagerView"
         mc:Ignorable="d"
-        Title="Account Management"
-        Height="600"
-        Width="1000"
+        Title="AccountManagement" Height="600" Width="1000"
         WindowStartupLocation="CenterScreen">
     <Grid Background="White">
         <StackPanel Orientation="Vertical">
@@ -20,8 +18,7 @@
                                FontSize="16"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Center"
-                               Cursor="Hand"
-                               MouseLeftButtonUp="Logo_Click"/>
+                               Cursor="Hand"/>
                 </Border>
                 <Button Content="Shift Management" Background="Gold" Width="120" Margin="1"/>
                 <Button Content="Coupon Management" Background="Gold" Width="130" Margin="1"/>
@@ -38,7 +35,7 @@
                       HeadersVisibility="Column"
                       CanUserAddRows="False"
                       Margin="10"
-                      Height="400">
+                      Height="400" SelectionChanged="AccountDataGrid_SelectionChanged">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Mã user" Width="*" Binding="{Binding UserId}" />
                     <DataGridTextColumn Header="Tên user" Width="*" Binding="{Binding Name}" />
