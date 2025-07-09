@@ -1,52 +1,43 @@
-﻿using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
 using Models;
+using Repositories.Repositories;
+using Services.Interfaces;
+using Services.Services;
 using View.ManagerView;
 
 namespace View
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class Login : Window
     {
-        private readonly FastFoodDbContext _context = new();
+        private readonly IUserService _userService;
+
         public Login()
         {
             InitializeComponent();
+            var context = new FastFoodDbContext();
+            var userRepo = new UserRepos(context);
+            _userService = new UserService(userRepo);
         }
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            string username = txtUsername.Text;
+            string username = txtUsername.Text.Trim();
             string password = txtPassword.Password;
 
-            var user = _context.Users
-                .Where(u => u.UserName == username && u.Password == password && u.IsActive == true)
-                .Select(u => new { u.UserId, u.FullName, u.Role.RoleName })
-                .FirstOrDefault();
+            var user = _userService.Login(username, password);
 
-            if (user != null)
+            if (user != null && user.IsActive == true)
             {
-                // Route based on role
-                switch (user.RoleName?.ToLower())
+                SessionService.SetUser(user); // ✅ Lưu người dùng đang đăng nhập
+
+                switch (user.Role.RoleName?.ToLowerInvariant())
                 {
                     case "admin":
-                        var adminWindow = new AccountManagement();
-                        adminWindow.Show();
+                        new AccountManagement().Show();
                         break;
 
                     case "staff":
-                        var staffWindow = new StaffMainWindow();
-                        staffWindow.Show();
+                        new StaffMainWindow().Show();
                         break;
 
                     case "manager":
@@ -58,11 +49,11 @@ namespace View
                         break;
                 }
 
-                this.Close(); // Close login window
+                this.Close(); // Đóng cửa sổ đăng nhập
             }
             else
             {
-                MessageBox.Show("Invalid username or password.");
+                MessageBox.Show("Sai tài khoản hoặc mật khẩu.");
             }
         }
     }

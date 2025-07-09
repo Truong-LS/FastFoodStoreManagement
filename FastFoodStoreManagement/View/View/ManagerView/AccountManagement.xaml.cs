@@ -12,21 +12,18 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace View.ManagerView
+namespace View.ManagerView.Control
 {
     /// <summary>
     /// Interaction logic for AccountManagement.xaml
     /// </summary>
-    public partial class AccountManagement : Window
+    public partial class AccountManagement : UserControl
     {
         public AccountManagement()
         {
             InitializeComponent();
         }
 
-        private void AccountDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
+       
     }
 }
