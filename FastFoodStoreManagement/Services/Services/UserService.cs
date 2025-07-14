@@ -18,6 +18,16 @@ namespace Services.Services
             _userRepos = userRepos;
         }
 
+        public void CreateUser(Users user)
+        {
+            _userRepos.Add(user);
+        }
+
+        public void DeleteUser(int id)
+        {
+            _userRepos.Delete(id);
+        }
+
         public IEnumerable<Users> GetAllUsers()
         {
             return _userRepos.GetAll();
@@ -36,6 +46,11 @@ namespace Services.Services
         public Users? Login(string username, string password)
         {
             return _userRepos.GetByUsernameAndPassword(username, password);
+        }
+
+        public void UpdateUser(Users user)
+        {
+            _userRepos.Update(user);
         }
     }
 }

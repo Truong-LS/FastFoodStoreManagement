@@ -28,7 +28,7 @@ namespace View
 
             if (user != null && user.IsActive == true)
             {
-                SessionService.SetUser(user); // ✅ Lưu người dùng đang đăng nhập
+                SessionService.SetUser(user);  
 
                 switch (user.Role.RoleName?.ToLowerInvariant())
                 {
@@ -49,7 +49,7 @@ namespace View
                         break;
                 }
 
-                this.Close(); // Đóng cửa sổ đăng nhập
+                this.Close();  
             }
             else
             {

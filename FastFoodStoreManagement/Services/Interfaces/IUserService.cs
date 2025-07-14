@@ -13,5 +13,8 @@ namespace Services.Interfaces
         Users? GetUserById(int id);
         Users? GetUserByUsername(string username);
         Users? Login(string username, string password);
+        void CreateUser(Users user);
+        void UpdateUser(Users user);
+        void DeleteUser(int id);
     }
 }
