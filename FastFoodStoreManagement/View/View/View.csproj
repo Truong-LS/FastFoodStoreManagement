@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="ViewModel\" />
+    <ApplicationDefinition Include="View\App.xaml" />
   </ItemGroup>
 
   <ItemGroup>

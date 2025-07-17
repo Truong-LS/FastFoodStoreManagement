@@ -11,7 +11,7 @@
             <RowDefinition Height="Auto"/>
             <!-- Dòng chứa 2 ô DatePicker -->
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="350"/>
             <!-- Nút Create -->
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
@@ -30,24 +30,103 @@
 
         <!-- ListView ở hàng 2 -->
         <ListView Grid.Row="2" ItemsSource="{Binding ProductList}" Margin="10"
-              BorderThickness="0"
-              ScrollViewer.VerticalScrollBarVisibility="Auto"
-              ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+          BorderThickness="0"
+          ScrollViewer.VerticalScrollBarVisibility="Auto"
+          ScrollViewer.HorizontalScrollBarVisibility="Disabled">
 
             <!-- Header Template -->
             <ListView.View>
                 <GridView>
                     <!-- Các GridViewColumn của bạn giữ nguyên như cũ -->
-                    <GridViewColumn Header="Product ID" Width="120">
+                    <GridViewColumn Header="Log ID" Width="Auto">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <Border Background="#00CFFF" CornerRadius="10" Padding="10" Margin="5">
-                                    <TextBlock Text="{Binding ProductId}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Cyan"/>
+                                    <TextBlock Text="{Binding LogId}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Cyan"/>
                                 </Border>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <!-- Các cột khác... giữ nguyên -->
+                    
+                    <GridViewColumn Header="Log Type" Width="Auto">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Border Background="#00CFFF" CornerRadius="10" Padding="10" Margin="5">
+                                    <TextBlock Text="{Binding LogType}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Cyan"/>
+                                </Border>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    
+                    <GridViewColumn Header="ChangeQty" Width="Auto">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Border Background="#00CFFF" CornerRadius="10" Padding="10" Margin="5">
+                                    <TextBlock Text="{Binding ChangeQty}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Cyan"/>
+                                </Border>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Unit" Width="Auto">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Border Background="#00CFFF" CornerRadius="10" Padding="10" Margin="5">
+                                    <TextBlock Text="{Binding Unit}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Cyan"/>
+                                </Border>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Note" Width="Auto">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Border Background="#00CFFF" CornerRadius="10" Padding="10" Margin="5">
+                                    <TextBlock Text="{Binding Note}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Cyan"/>
+                                </Border>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Created At" Width="Auto">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Border Background="#00CFFF" CornerRadius="10" Padding="10" Margin="5">
+                                    <TextBlock Text="{Binding CreatedAt}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Cyan"/>
+                                </Border>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="User" Width="Auto">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Border Background="#00CFFF" CornerRadius="10" Padding="10" Margin="5">
+                                    <TextBlock Text="{Binding }" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Cyan"/>
+                                </Border>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Material" Width="Auto">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Border Background="#00CFFF" CornerRadius="10" Padding="10" Margin="5">
+                                    <TextBlock Text="{Binding}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Cyan"/>
+                                </Border>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Supplier" Width="Auto">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Border Background="#00CFFF" CornerRadius="10" Padding="10" Margin="5">
+                                    <TextBlock Text="{Binding}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Cyan"/>
+                                </Border>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                 </GridView>
             </ListView.View>
 
@@ -79,11 +158,11 @@
 
         <!-- Popup -->
         <Popup x:Name="CreatePopup"
-           IsOpen="False"
-           StaysOpen="False"
-           Placement="Center"
-           AllowsTransparency="True"
-           PopupAnimation="Fade">
+       IsOpen="False"
+       StaysOpen="False"
+       Placement="Center"
+       AllowsTransparency="True"
+       PopupAnimation="Fade">
             <Border Background="White" BorderBrush="Black" BorderThickness="1" Padding="20" CornerRadius="10" Width="400">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -138,6 +217,4 @@
             </Border>
         </Popup>
     </Grid>
-    
-    
 </UserControl>

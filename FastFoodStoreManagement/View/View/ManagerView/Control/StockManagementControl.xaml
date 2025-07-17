@@ -8,19 +8,19 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <ListView ItemsSource="{Binding StockInList}" Margin="10"
-          BorderThickness="1" BorderBrush="Gray"
-          ScrollViewer.VerticalScrollBarVisibility="Auto"
-          ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+      BorderThickness="1" BorderBrush="Gray"
+      ScrollViewer.VerticalScrollBarVisibility="Auto"
+      ScrollViewer.HorizontalScrollBarVisibility="Disabled">
 
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Product ID" Width="100" DisplayMemberBinding="{Binding ProductId}" />
-                    <GridViewColumn Header="Product Name" Width="150" DisplayMemberBinding="{Binding ProductName}" />
-                    <GridViewColumn Header="Value" Width="80" DisplayMemberBinding="{Binding Value}" />
+                    <GridViewColumn Header="Product ID" Width="100" DisplayMemberBinding="{Binding ItemId}" />
+                    <GridViewColumn Header="Product Name" Width="150" DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn Header="Value" Width="80" DisplayMemberBinding="{Binding Price}" />
                     <GridViewColumn Header="Unit" Width="80" DisplayMemberBinding="{Binding Unit}" />
-                    <GridViewColumn Header="Ngày nhập" Width="120" DisplayMemberBinding="{Binding EntryDate, StringFormat='dd/MM/yyyy'}" />
+                    <GridViewColumn Header="Entry Date" Width="120" DisplayMemberBinding="{Binding EntryDate, StringFormat='dd/MM/yyyy'}" />
                     <GridViewColumn Header="Log Type" Width="120" DisplayMemberBinding="{Binding LogType}" />
-                    <GridViewColumn Header="Nhà cung cấp" Width="150" DisplayMemberBinding="{Binding Supplier}" />
+                    <GridViewColumn Header="Supplier" Width="150" DisplayMemberBinding="{Binding Supplier}" />
                 </GridView>
             </ListView.View>
 

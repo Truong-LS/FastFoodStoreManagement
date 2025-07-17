@@ -25,7 +25,6 @@ namespace View.ManagerView.Control
             InitializeComponent();
         }
 
-
         private void OpenPopup_Click(object sender, RoutedEventArgs e)
         {
             CreatePopup.IsOpen = true;

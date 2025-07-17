@@ -12,9 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using View.ManagerView.Control;
-using View.View.ManagerView.Control;
 
-namespace View.View.ManagerView
+namespace View.ManagerView
 {
     /// <summary>
     /// Interaction logic for StaffMainWindow.xaml
@@ -23,6 +22,8 @@ namespace View.View.ManagerView
     {
         private Brush defaultColor = Brushes.Gold;
         private Brush selectedColor = Brushes.LightGreen;
+
+        // Constructor with no parameters
         public StaffMainWindow()
         {
             InitializeComponent();
@@ -60,7 +61,7 @@ namespace View.View.ManagerView
 
         private void BtnAccountManager_Click(object sender, RoutedEventArgs e)
         {
-            MainContent.Content = new AccManagementControl();
+
         }
     }
 }

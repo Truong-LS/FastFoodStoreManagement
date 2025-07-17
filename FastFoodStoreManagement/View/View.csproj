@@ -9,10 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Images\Logo\9110796_x_icon.png" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Include="Images\Logo\9110796_x_icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -41,10 +37,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="View\Login.xaml">
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="View\login.xaml">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Page>
   </ItemGroup>
+
 
 
 </Project>
