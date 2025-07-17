@@ -5,64 +5,54 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
-        Title="CreateShiffWindow" Height="450" Width="800">
-    <Grid Margin="20">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <!-- Header -->
-            <RowDefinition Height="Auto"/>
-            <!-- MãNV -->
-            <RowDefinition Height="Auto"/>
-            <!-- TênNV -->
-            <RowDefinition Height="Auto"/>
-            <!-- Ngày -->
-            <RowDefinition Height="Auto"/>
-            <!-- Ca làm -->
-            <RowDefinition Height="*"/>
-            <!-- Spacer -->
-            <RowDefinition Height="Auto"/>
-            <!-- Button -->
-        </Grid.RowDefinitions>
+        Title="Create Shift" Height="550" Width="400"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <StackPanel Margin="20">
+            <TextBlock Text="Shift Name:" Margin="0,10,0,0"/>
+            <TextBox x:Name="txtShiftName" Margin="0,5,0,0" Text="{Binding NewShift.Name, Mode=TwoWay}"/>
 
-        <!-- Header -->
-        <Border Grid.Row="0" Background="#FF5B5B" CornerRadius="8">
-            <TextBlock Text="create shift"
-                       VerticalAlignment="Center" HorizontalAlignment="Center"
-                       FontSize="16" FontWeight="SemiBold"/>
-        </Border>
+            <TextBlock Text="Start Time:" Margin="0,10,0,0"/>
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                <DatePicker x:Name="dpStartTime" SelectedDate="{Binding NewShift.StartTime, Mode=TwoWay}" Width="100"/>
+                <TextBox x:Name="txtStartTimeHour" Width="30" Margin="5,0,0,0" Text="{Binding NewShift.StartTime.Value.Hour, Mode=TwoWay}" MaxLength="2"/>
+                <TextBlock Text=":" VerticalAlignment="Center" Margin="2,0"/>
+                <TextBox x:Name="txtStartTimeMinute" Width="30" Text="{Binding NewShift.StartTime.Value.Minute, Mode=TwoWay}" MaxLength="2"/>
+            </StackPanel>
 
-        <!-- MãNV -->
-        <StackPanel Grid.Row="1" Margin="0,10,0,0">
-            <TextBlock Text="MãNV" Margin="0,0,0,4"/>
-            <TextBox x:Name="TxtMaNV" Height="30"/>
+            <TextBlock Text="End Time:" Margin="0,10,0,0"/>
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                <DatePicker x:Name="dpEndTime" SelectedDate="{Binding NewShift.EndTime, Mode=TwoWay}" Width="100"/>
+                <TextBox x:Name="txtEndTimeHour" Width="30" Margin="5,0,0,0" Text="{Binding NewShift.EndTime.Value.Hour, Mode=TwoWay}" MaxLength="2"/>
+                <TextBlock Text=":" VerticalAlignment="Center" Margin="2,0"/>
+                <TextBox x:Name="txtEndTimeMinute" Width="30" Text="{Binding NewShift.EndTime.Value.Minute, Mode=TwoWay}" MaxLength="2"/>
+            </StackPanel>
+
+            <TextBlock Text="User FullName:" Margin="0,10,0,0"/>
+            <ComboBox x:Name="cmbUser" Margin="0,5,0,0"
+                      ItemsSource="{Binding UsersList}"
+                      DisplayMemberPath="FullName"
+                      SelectedValuePath="UserId"
+                      SelectedValue="{Binding NewUserShift.UserId, Mode=TwoWay}"/>
+
+            <TextBlock Text="Work Date:" Margin="0,10,0,0"/>
+            <DatePicker x:Name="dpWorkDate" Margin="0,5,0,0" SelectedDate="{Binding NewUserShift.WorkDate, Mode=TwoWay}"/>
+
+            <TextBlock Text="Check In:" Margin="0,10,0,0"/>
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                <TextBox x:Name="txtCheckInHour" Width="30" Text="{Binding NewUserShift.CheckIn.Value.Hour, Mode=TwoWay}" MaxLength="2"/>
+                <TextBlock Text=":" VerticalAlignment="Center" Margin="2,0"/>
+                <TextBox x:Name="txtCheckInMinute" Width="30" Text="{Binding NewUserShift.CheckIn.Value.Minute, Mode=TwoWay}" MaxLength="2"/>
+            </StackPanel>
+
+            <TextBlock Text="Check Out:" Margin="0,10,0,0"/>
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                <TextBox x:Name="txtCheckOutHour" Width="30" Text="{Binding NewUserShift.CheckOut.Value.Hour, Mode=TwoWay}" MaxLength="2"/>
+                <TextBlock Text=":" VerticalAlignment="Center" Margin="2,0"/>
+                <TextBox x:Name="txtCheckOutMinute" Width="30" Text="{Binding NewUserShift.CheckOut.Value.Minute, Mode=TwoWay}" MaxLength="2"/>
+            </StackPanel>
+            
+            <Button Content="Create" Margin="0,20,0,0" Click="BtnCreate_Click"/>
         </StackPanel>
-
-        <!-- Tên nhân viên -->
-        <StackPanel Grid.Row="2" Margin="0,10,0,0">
-            <TextBlock Text="Tên nhân viên" Margin="0,0,0,4"/>
-            <TextBox x:Name="TxtTenNV" Height="30"/>
-        </StackPanel>
-
-        <!-- Ngày -->
-        <StackPanel Grid.Row="3" Margin="0,10,0,0">
-            <TextBlock Text="Ngày" Margin="0,0,0,4"/>
-            <DatePicker x:Name="DpNgay" Height="30"/>
-        </StackPanel>
-
-        <!-- Ca làm -->
-        <StackPanel Grid.Row="4" Margin="0,10,0,0">
-            <TextBlock Text="Ca làm" Margin="0,0,0,4"/>
-            <ComboBox x:Name="CboCaLam" Height="30" SelectedIndex="0">
-                <ComboBoxItem Content="Ca 1"/>
-                <ComboBoxItem Content="Ca 2"/>
-                <ComboBoxItem Content="Ca 3"/>
-            </ComboBox>
-        </StackPanel>
-
-        <!-- Create button -->
-        <Button Grid.Row="6" Content="Create" Width="100" Height="30"
-                HorizontalAlignment="Center"
-                Click="BtnCreate_Click"
-                Background="#B26AF6" Foreground="White"/>
     </Grid>
 </Window>

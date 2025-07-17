@@ -19,5 +19,10 @@ namespace View
         {
             MainContent.Content = new CouponManagementWindow();
         }
+
+        private void ShiftManagement_Click(object sender, RoutedEventArgs e)
+        {
+            MainContent.Content = new ShiffManagementWindow();
+        }
     }
 }

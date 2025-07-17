@@ -35,7 +35,7 @@
                            HorizontalAlignment="Center"
                            Cursor="Hand"/>
             </Border>
-            <Button Content="Shift Management" Background="Gold" Margin="1,0,1,0" Grid.Column="1"/>
+            <Button Content="Shift Management" Background="Gold" Margin="1,0,1,0" Grid.Column="1" Click="ShiftManagement_Click"/>
             <Button Content="Coupon Management" Background="Gold" Margin="1,0,1,0" Click="CouponManagement_Click" Grid.Column="2"/>
             <Button Content="Stock Management" Background="Gold" Margin="1,0,1,0" Grid.Column="3"/>
             <Button Content="Nhập kho / xuất kho" Background="Gold" Margin="1,0,1,0" Grid.Column="4"/>
