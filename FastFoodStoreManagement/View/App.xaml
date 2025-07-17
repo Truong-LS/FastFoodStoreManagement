@@ -1,9 +1,10 @@
 ﻿<Application x:Class="View.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:View"
+             xmlns:local="clr-namespace:View.Helper"
              StartupUri="View/StaffView/OrderWindow.xaml">
     <Application.Resources>
-       
+        <local:QuantityMultiConverter x:Key="QuantityMultiConverter"/>
     </Application.Resources>
 </Application>
+
