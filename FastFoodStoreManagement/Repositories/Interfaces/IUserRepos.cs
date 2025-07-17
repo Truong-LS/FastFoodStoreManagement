@@ -14,7 +14,7 @@ namespace Repositories.Interfaces
         Users? GetById(int id);
         Users? GetByUsername(string username);
         Users? GetByUsernameAndPassword(string username, string password);
-        oid Add(Users user);
+        void Add(Users user);
         void Update(Users user);
         void Delete(int id);
     }

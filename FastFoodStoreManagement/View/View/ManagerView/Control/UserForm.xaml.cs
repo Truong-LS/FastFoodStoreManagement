@@ -97,3 +97,4 @@ namespace View.View.ManagerView.Control
         }
     }
 }
+ 
