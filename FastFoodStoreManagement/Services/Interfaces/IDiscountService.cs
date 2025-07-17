@@ -9,5 +9,6 @@ namespace Services.Interfaces
         void AddDiscount(Discounts discount);
         void UpdateDiscount(Discounts discount);
         void DeleteDiscount(int discountId);
+        Discounts GetDiscountByCode(string code);
     }
 }

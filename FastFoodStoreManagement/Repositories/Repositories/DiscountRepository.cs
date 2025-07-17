@@ -37,5 +37,10 @@ namespace Repositories.Repositories
         {
             _discountDAO.DeleteDiscount(discountId);
         }
+
+        public Discounts GetDiscountByCode(string code)
+        {
+            return _discountDAO.GetDiscountByCode(code);
+        }
     }
 }

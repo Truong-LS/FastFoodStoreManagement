@@ -22,6 +22,11 @@ namespace DataAccessObject
             return _context.Discounts.Find(discountId);
         }
 
+        public Discounts GetDiscountByCode(string code)
+        {
+            return _context.Discounts.FirstOrDefault(d => d.Code == code);
+        }
+
         public void AddDiscount(Discounts discount)
         {
             // Manually generate a new unique DiscountId

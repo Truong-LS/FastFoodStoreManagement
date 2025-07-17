@@ -45,7 +45,7 @@
 
         <!-- Ngày hết hạn -->
         <StackPanel Grid.Row="3" Margin="0,10,0,0">
-            <TextBlock Text="Ngày" Margin="0,0,0,4"/>
+            <TextBlock Text="Ngày hết hạn" Margin="0,0,0,4"/>
             <DatePicker x:Name="DpNgayHetHan" Height="30"/>
         </StackPanel>
 
@@ -53,9 +53,8 @@
         <StackPanel Grid.Row="4" Margin="0,10,0,0">
             <TextBlock Text="Loại" Margin="0,0,0,4"/>
             <ComboBox x:Name="CboLoai" Height="30" SelectedIndex="0">
-                <ComboBoxItem Content="Rau củ"/>
-                <ComboBoxItem Content="Combo gà"/>
-                <ComboBoxItem Content="Kem"/>
+                <ComboBoxItem Content="%"/>
+                <ComboBoxItem Content="đồng"/>
             </ComboBox>
         </StackPanel>
 
