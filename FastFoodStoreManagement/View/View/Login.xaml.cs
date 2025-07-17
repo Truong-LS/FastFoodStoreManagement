@@ -1,5 +1,4 @@
-﻿using Models;
-using System.Text;
+﻿using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -9,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Models;
 using View.ManagerView;
 
 namespace View
@@ -32,6 +32,7 @@ namespace View
             {
                 if (user.IsActive == true && user.RoleId == 3)
                 {
+                    Application.Current.Properties["CurrentUserId"] = user.UserId;
                     // Login successful, open the main window
                     MessageBox.Show("Welcome "+user.FullName+" Role: Administrator", "Login", MessageBoxButton.OK, MessageBoxImage.Information);
                     StaffMainWindow staffMainWindow = new StaffMainWindow();

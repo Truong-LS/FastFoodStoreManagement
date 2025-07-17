@@ -7,20 +7,78 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <ListView ItemsSource="{Binding StockInList}" Margin="10"
-      BorderThickness="1" BorderBrush="Gray"
-      ScrollViewer.VerticalScrollBarVisibility="Auto"
-      ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+        <ListView x:Name="MaterialsDataGrid" Margin="10"
+                  BorderThickness="1" BorderBrush="Gray"
+                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
 
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Product ID" Width="100" DisplayMemberBinding="{Binding ItemId}" />
-                    <GridViewColumn Header="Product Name" Width="150" DisplayMemberBinding="{Binding Name}" />
-                    <GridViewColumn Header="Value" Width="80" DisplayMemberBinding="{Binding Price}" />
-                    <GridViewColumn Header="Unit" Width="80" DisplayMemberBinding="{Binding Unit}" />
-                    <GridViewColumn Header="Entry Date" Width="120" DisplayMemberBinding="{Binding EntryDate, StringFormat='dd/MM/yyyy'}" />
-                    <GridViewColumn Header="Log Type" Width="120" DisplayMemberBinding="{Binding LogType}" />
-                    <GridViewColumn Header="Supplier" Width="150" DisplayMemberBinding="{Binding Supplier}" />
+                    <GridViewColumn Header="Item ID" Width="100" DisplayMemberBinding="{Binding MaterialId}" />
+                    
+                    <!-- Item Name-->
+                    <GridViewColumn Header="Item Name" Width="200">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}"
+                                           Padding="10,0,0,0"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center" />    
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    
+                    <!-- Unit -->
+                    <GridViewColumn Header="Unit" Width="50">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <DockPanel LastChildFill="True" HorizontalAlignment="Stretch">
+                                    <TextBlock Text="{Binding Unit}"
+                                               HorizontalAlignment="Center"
+                                               TextAlignment="Center"
+                                               Width="100" />           
+                                </DockPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    
+                    <!--Stock Quantity-->
+                    <GridViewColumn Header="Stock Qty" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <DockPanel LastChildFill="True" HorizontalAlignment="Stretch">
+                                    <TextBlock Text="{Binding StockQty}"
+                                               HorizontalAlignment="Center"
+                                               TextAlignment="Center"
+                                               Width="100" >
+                                        <TextBlock.Style>
+                                            <Style TargetType="TextBlock">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding IsLowStock}" Value="True">
+                                                        <Setter Property="Foreground" Value="Red"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </DockPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    
+                    <!--MinThreshold-->
+                    <GridViewColumn Header="MinThreshold" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <DockPanel LastChildFill="True" HorizontalAlignment="Stretch">
+                                    <TextBlock Text="{Binding MinThreshold}"
+                                               HorizontalAlignment="Center"
+                                               TextAlignment="Center"
+                                               Width="100" />
+                                </DockPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                 </GridView>
             </ListView.View>
 

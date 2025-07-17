@@ -11,7 +11,7 @@
             <RowDefinition Height="Auto"/>
             <!-- Dòng chứa 2 ô DatePicker -->
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="350"/>
+            <RowDefinition Height="330"/>
             <!-- Nút Create -->
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
@@ -20,80 +20,76 @@
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10" >
             <StackPanel Orientation="Vertical" Margin="0,0,200,0">
                 <TextBlock Text="From Date:" FontWeight="Bold" Margin="0,0,0,5" HorizontalAlignment="Center"/>
-                <DatePicker Name="FromDatePicker" Width="150" HorizontalAlignment="Center"/>
+                <DatePicker Name="FromDatePicker" Width="150" HorizontalAlignment="Center" SelectedDateChanged="DatePicker_SelectedDateChanged"/>
             </StackPanel>
-            <StackPanel Orientation="Vertical" >
+            <StackPanel Orientation="Vertical" Margin="0,0,30,0" >
                 <TextBlock Text="To Date:" FontWeight="Bold" Margin="0,0,0,5" HorizontalAlignment="Center"/>
-                <DatePicker Name="ToDatePicker" Width="150" HorizontalAlignment="Center"/>
+                <DatePicker Name="ToDatePicker" Width="150" HorizontalAlignment="Center" SelectedDateChanged="DatePicker_SelectedDateChanged"/>
             </StackPanel>
+
+            <Button Content="Clear" Width="70" Height="30" VerticalAlignment="Bottom" Click="ClearDateFilters_Click" />
         </StackPanel>
 
         <!-- ListView ở hàng 2 -->
-        <ListView Grid.Row="2" ItemsSource="{Binding ProductList}" Margin="10"
+        <ListView x:Name="LogDataGrid" Grid.Row="2" Margin="10"
           BorderThickness="0"
           ScrollViewer.VerticalScrollBarVisibility="Auto"
-          ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-
-            <!-- Header Template -->
+          ScrollViewer.HorizontalScrollBarVisibility="Auto">
             <ListView.View>
                 <GridView>
-                    <!-- Các GridViewColumn của bạn giữ nguyên như cũ -->
-                    <GridViewColumn Header="Log ID" Width="Auto">
+                    <GridViewColumn Header="Log ID" Width="80" DisplayMemberBinding="{Binding LogId}" />
+
+                    <GridViewColumn Header="Log Type" Width="100">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Border Background="#00CFFF" CornerRadius="10" Padding="10" Margin="5">
-                                    <TextBlock Text="{Binding LogId}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Cyan"/>
-                                </Border>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    
-                    <GridViewColumn Header="Log Type" Width="Auto">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <Border Background="#00CFFF" CornerRadius="10" Padding="10" Margin="5">
-                                    <TextBlock Text="{Binding LogType}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Cyan"/>
-                                </Border>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    
-                    <GridViewColumn Header="ChangeQty" Width="Auto">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <Border Background="#00CFFF" CornerRadius="10" Padding="10" Margin="5">
-                                    <TextBlock Text="{Binding ChangeQty}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Cyan"/>
-                                </Border>
+                                <DockPanel LastChildFill="True" HorizontalAlignment="Stretch">
+                                    <TextBlock Text="{Binding LogType}"
+                                               HorizontalAlignment="Center"
+                                               TextAlignment="Center"
+                                               Width="100" />
+                                </DockPanel>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
 
-                    <GridViewColumn Header="Unit" Width="Auto">
+
+                    <GridViewColumn Header="Change Qty" Width="Auto">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Border Background="#00CFFF" CornerRadius="10" Padding="10" Margin="5">
-                                    <TextBlock Text="{Binding Unit}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Cyan"/>
-                                </Border>
+                                <DockPanel LastChildFill="True" HorizontalAlignment="Stretch">
+                                    <TextBlock Text="{Binding ChangeQty}"
+                                               HorizontalAlignment="Center"
+                                               TextAlignment="Center"
+                                               Width="100" />
+                                </DockPanel>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
 
-                    <GridViewColumn Header="Note" Width="Auto">
+                    <GridViewColumn Header="Unit" Width="50">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Border Background="#00CFFF" CornerRadius="10" Padding="10" Margin="5">
-                                    <TextBlock Text="{Binding Note}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Cyan"/>
-                                </Border>
+                                <DockPanel LastChildFill="True" HorizontalAlignment="Stretch">
+                                    <TextBlock Text="{Binding Unit}"
+                                               HorizontalAlignment="Center"
+                                               TextAlignment="Center"
+                                               Width="100" />   
+                                </DockPanel>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
+
+                    <GridViewColumn Header="Note" Width="Auto" DisplayMemberBinding="{Binding Note}" />
 
                     <GridViewColumn Header="Created At" Width="Auto">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Border Background="#00CFFF" CornerRadius="10" Padding="10" Margin="5">
-                                    <TextBlock Text="{Binding CreatedAt}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Cyan"/>
-                                </Border>
+                                <DockPanel LastChildFill="True" HorizontalAlignment="Stretch">
+                                    <TextBlock Text="{Binding CreatedAt, StringFormat=dd/MM/yyyy HH:mm:ss}"
+                                               HorizontalAlignment="Center"
+                                               TextAlignment="Center"
+                                               Width="120" />
+                                </DockPanel>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -101,9 +97,10 @@
                     <GridViewColumn Header="User" Width="Auto">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Border Background="#00CFFF" CornerRadius="10" Padding="10" Margin="5">
-                                    <TextBlock Text="{Binding }" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Cyan"/>
-                                </Border>
+                                <TextBlock Text="{Binding UserFullName}"
+                                           Padding="10,0,0,0"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -111,9 +108,10 @@
                     <GridViewColumn Header="Material" Width="Auto">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Border Background="#00CFFF" CornerRadius="10" Padding="10" Margin="5">
-                                    <TextBlock Text="{Binding}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Cyan"/>
-                                </Border>
+                                <TextBlock Text="{Binding MaterialName}"
+                                           Padding="5,0,0,0"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -121,100 +119,101 @@
                     <GridViewColumn Header="Supplier" Width="Auto">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Border Background="#00CFFF" CornerRadius="10" Padding="10" Margin="5">
-                                    <TextBlock Text="{Binding}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Cyan"/>
-                                </Border>
+                                <TextBlock Text="{Binding SupplierName}"
+                                           Padding="5,0,0,0"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
+
                 </GridView>
             </ListView.View>
-
-            <ListView.ItemContainerStyle>
-                <Style TargetType="ListViewItem">
-                    <Setter Property="BorderThickness" Value="0"/>
-                    <Setter Property="Padding" Value="0"/>
-                    <Setter Property="Margin" Value="0,5,0,5"/>
-                    <Setter Property="Background" Value="Transparent"/>
-                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                    <Setter Property="VerticalContentAlignment" Value="Center"/>
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="ListViewItem">
-                                <Border Background="{TemplateBinding Background}">
-                                    <ContentPresenter/>
-                                </Border>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </ListView.ItemContainerStyle>
         </ListView>
-
-        <!-- Nút Create ở hàng 3 -->
+        
+        <!-- Create -->
         <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Left" Margin="10">
             <Button Content="Create" Width="70" Height="35" Click="OpenPopup_Click"/>
         </StackPanel>
 
         <!-- Popup -->
         <Popup x:Name="CreatePopup"
-       IsOpen="False"
-       StaysOpen="False"
-       Placement="Center"
-       AllowsTransparency="True"
-       PopupAnimation="Fade">
-            <Border Background="White" BorderBrush="Black" BorderThickness="1" Padding="20" CornerRadius="10" Width="400">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-
-                    <!-- Form -->
-                    <Grid Margin="0">
+               IsOpen="False"
+               StaysOpen="False"
+               Placement="Center"
+               AllowsTransparency="True"
+               PopupAnimation="Fade">
+                <Border Background="White" BorderBrush="Black" BorderThickness="1" Padding="20" CornerRadius="10" Width="400">
+                    <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="100"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
 
-                        <TextBlock Text="Product ID:" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="0,5"/>
-                        <TextBox x:Name="ProductIdTextBox" Grid.Row="0" Grid.Column="1" Width="200" Margin="0,5"/>
+                        <!-- Form -->
+                        <Grid Margin="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
 
-                        <TextBlock Text="Product Name:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="0,5"/>
-                        <TextBox x:Name="ProductNameTextBox" Grid.Row="1" Grid.Column="1" Width="200" Margin="0,5"/>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
 
-                        <TextBlock Text="Value:" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="0,5"/>
-                        <TextBox x:Name="ValueTextBox" Grid.Row="2" Grid.Column="1" Width="200" Margin="0,5"/>
 
-                        <TextBlock Text="Unit:" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Margin="0,5"/>
-                        <TextBox x:Name="UnitTextBox" Grid.Row="3" Grid.Column="1" Width="200" Margin="0,5"/>
+                            <TextBlock Text="Material:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="0,5"/>
+                            <ComboBox x:Name="MaterialComboBox" Grid.Row="1" Grid.Column="1" Width="200" Margin="0,5"
+                                      DisplayMemberPath="Name"
+                                      SelectedValuePath="MaterialId"/>  
 
-                        <TextBlock Text="Entry Date:" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" Margin="0,5"/>
-                        <DatePicker x:Name="EntryDatePicker" Grid.Row="4" Grid.Column="1" Width="200" Margin="0,5"/>
+                        <TextBlock Text="Change Qty:" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="0,5"/>
+                            <TextBox x:Name="ChangeQtyTextBox" Grid.Row="2" Grid.Column="1" Width="200" Margin="0,5"/>
 
-                        <TextBlock Text="Log Type:" Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" Margin="0,5"/>
-                        <TextBox x:Name="LogTypeTextBox" Grid.Row="5" Grid.Column="1" Width="200" Margin="0,5"/>
+                            <TextBlock Text="Log Type:" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Margin="0,5"/>
+                            <ComboBox x:Name="LogTypeComboBox"
+                                      Grid.Row="3" Grid.Column="1" Width="200" Margin="0,5"
+                                      SelectionChanged="LogTypeComboBox_SelectionChanged">
+                                <ComboBoxItem Content="StockIn" />
+                                <ComboBoxItem Content="StockOut" />
+                            </ComboBox>
+                            
+                            <TextBlock Text="Unit:" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" Margin="0,5"/>
+                            <ComboBox x:Name="UnitTextBox" Grid.Row="4" Grid.Column="1" Width="200" Margin="0,5">
+                                <ComboBoxItem Content="Cái" />
+                                <ComboBoxItem Content="Kg" />
+                                <ComboBoxItem Content="Lít"/>
+                            </ComboBox>
 
-                        <TextBlock Text="Supplier:" Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" Margin="0,5"/>
-                        <TextBox x:Name="SupplierTextBox" Grid.Row="6" Grid.Column="1" Width="200" Margin="0,5"/>
+                            <TextBlock Text="Note:" Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" Margin="0,5"/>
+                            <TextBox x:Name="NoteTextBox"
+                                             Grid.Row="5" Grid.Column="1" Width="200"
+                                             TextWrapping="Wrap"
+                                             AcceptsReturn="True"
+                                             VerticalScrollBarVisibility="Auto"
+                                            Height="80"
+                                             Margin="0,5"/>
+
+                            <TextBlock Text="Supplier:" Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" Margin="0,5"/>
+                             <ComboBox x:Name="SupplierComboBox" Grid.Row="6" Grid.Column="1" Width="200" Margin="0,5" 
+                                       DisplayMemberPath="Name"
+                                        SelectedValuePath="SupplierId"/>
+
                     </Grid>
 
-                    <!-- Buttons -->
-                    <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
-                        <Button Content="Save" Width="100" Margin="5" Click="SaveButton_Click"/>
-                        <Button Content="Cancel" Width="100" Margin="5" Click="CancelButton_Click"/>
-                    </StackPanel>
-                </Grid>
-            </Border>
+                        <!-- Buttons -->
+                        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
+                            <Button Content="Save" Width="100" Margin="5" Click="SaveButton_Click"/>
+                            <Button Content="Cancel" Width="100" Margin="5" Click="CancelButton_Click"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
         </Popup>
     </Grid>
 </UserControl>
