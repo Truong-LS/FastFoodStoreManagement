@@ -18,6 +18,9 @@
 		<Page Remove="Images\**" />
 		<Page Remove="ViewModel\**" />
 	</ItemGroup>
+  <ItemGroup>
+    <Folder Include="ViewModel\" />
+  </ItemGroup>
 
 	<ItemGroup>
 		<None Remove="Image\1.jpg" />
@@ -224,7 +227,16 @@
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Content>
 	</ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataAccessObject\DataAccessObject.csproj" />
+    <ProjectReference Include="..\Services\Services.csproj" />
+  </ItemGroup>
 
+  <ItemGroup>
+    <Page Update="View\Login.xaml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Page>
+  </ItemGroup>
 	<ItemGroup>
 	  <Content Include="Image\momoQR.png">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
