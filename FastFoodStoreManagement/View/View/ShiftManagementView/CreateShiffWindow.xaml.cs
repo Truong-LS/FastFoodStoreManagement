@@ -53,13 +53,13 @@ namespace View
             LoadUsers();
         }
 
-        private async void LoadUsers()
+        private void LoadUsers()
         {
-            var users = await _userService.GetAllUsers();
+            var users = _userService.GetAllUsers();
             UsersList = new ObservableCollection<Users>(users);
         }
 
-        private async void BtnCreate_Click(object sender, RoutedEventArgs e)
+        private void BtnCreate_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -120,9 +120,9 @@ namespace View
                 }
                 NewUserShift.UserId = (int)cmbUser.SelectedValue;
 
-                await _shiftService.AddShift(NewShift);
+                _shiftService.AddShift(NewShift);
                 NewUserShift.ShiftId = NewShift.ShiftId; // Link UserShift to the newly created Shift
-                await _userShiftService.AddUserShift(NewUserShift);
+                _userShiftService.AddUserShift(NewUserShift);
 
                 this.DialogResult = true;
                 this.Close();
@@ -130,12 +130,6 @@ namespace View
             catch (FormatException)
             {
                 MessageBox.Show("Please enter valid numbers for hour and minute.", "Input Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                this.DialogResult = false;
-            }
-            catch (Microsoft.EntityFrameworkCore.DbUpdateException dbEx) // Catch specific DB update exception
-            {
-                var innerExceptionMessage = dbEx.InnerException?.Message ?? dbEx.Message;
-                MessageBox.Show($"Error creating shift: {innerExceptionMessage}", "Database Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 this.DialogResult = false;
             }
             catch (Exception ex)

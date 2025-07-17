@@ -2,7 +2,6 @@ using Models;
 using Repositories.Interfaces;
 using Services.Interfaces;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace Services.Services
 {
@@ -15,29 +14,29 @@ namespace Services.Services
             _shiftRepository = new Repositories.Repositories.ShiftRepository();
         }
 
-        public async Task<List<Shifts>> GetAllShifts()
+        public List<Shifts> GetAllShifts()
         {
-            return await _shiftRepository.GetAllShifts();
+            return _shiftRepository.GetAllShifts();
         }
 
-        public async Task<Shifts?> GetShiftById(int id)
+        public Shifts? GetShiftById(int id)
         {
-            return await _shiftRepository.GetShiftById(id);
+            return _shiftRepository.GetShiftById(id);
         }
 
-        public async Task AddShift(Shifts shift)
+        public void AddShift(Shifts shift)
         {
-            await _shiftRepository.AddShift(shift);
+            _shiftRepository.AddShift(shift);
         }
 
-        public async Task UpdateShift(Shifts shift)
+        public void UpdateShift(Shifts shift)
         {
-            await _shiftRepository.UpdateShift(shift);
+            _shiftRepository.UpdateShift(shift);
         }
 
-        public async Task DeleteShift(int id)
+        public void DeleteShift(int id)
         {
-            await _shiftRepository.DeleteShift(id);
+            _shiftRepository.DeleteShift(id);
         }
     }
-} 
+}

@@ -4,7 +4,6 @@ using Models;
 using Services.Services;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Threading.Tasks;
 using System;
 
 namespace View
@@ -104,13 +103,13 @@ namespace View
             }
         }
 
-        private async void LoadUserShifts()
+        private void LoadUserShifts()
         {
-            var userShifts = await _userShiftService.GetAllUserShifts();
+            var userShifts = _userShiftService.GetAllUserShifts();
             UserShiftsList = new ObservableCollection<UserShifts>(userShifts);
         }
 
-        private async void Search_Click(object sender, RoutedEventArgs e)
+        private void Search_Click(object sender, RoutedEventArgs e)
         {
             int? day = cmbDay.SelectedIndex > 0 ? (int?)cmbDay.SelectedItem : null;
             int? month = cmbMonth.SelectedIndex > 0 ? (int?)cmbMonth.SelectedItem : null;
@@ -123,7 +122,7 @@ namespace View
                 return;
             }
 
-            var filteredUserShifts = await _userShiftService.SearchUserShiftsByDate(day, month, year);
+            var filteredUserShifts = _userShiftService.SearchUserShiftsByDate(day, month, year);
             UserShiftsList = new ObservableCollection<UserShifts>(filteredUserShifts);
         }
 
@@ -146,7 +145,7 @@ namespace View
             }
         }
 
-        private async void EditUserShift_Click(object sender, RoutedEventArgs e)
+        private void EditUserShift_Click(object sender, RoutedEventArgs e)
         {
             var button = (Button)sender;
             var userShift = (UserShifts)button.DataContext;
@@ -158,14 +157,14 @@ namespace View
             }
         }
 
-        private async void DeleteUserShift_Click(object sender, RoutedEventArgs e)
+        private void DeleteUserShift_Click(object sender, RoutedEventArgs e)
         {
             var button = (Button)sender;
             var userShift = (UserShifts)button.DataContext;
 
             if (MessageBox.Show("Are you sure you want to delete this user shift?", "Confirm Delete", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
-                await _userShiftService.DeleteUserShift(userShift.UserShiftId);
+                _userShiftService.DeleteUserShift(userShift.UserShiftId);
                 LoadUserShifts(); // Reload data after deletion
             }
         }

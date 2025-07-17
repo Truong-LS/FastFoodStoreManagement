@@ -2,7 +2,6 @@ using Models;
 using Repositories.Interfaces;
 using Services.Interfaces;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace Services.Services
 {
@@ -15,34 +14,34 @@ namespace Services.Services
             _userShiftRepository = new Repositories.Repositories.UserShiftRepository();
         }
 
-        public async Task<List<UserShifts>> GetAllUserShifts()
+        public List<UserShifts> GetAllUserShifts()
         {
-            return await _userShiftRepository.GetAllUserShifts();
+            return _userShiftRepository.GetAllUserShifts();
         }
 
-        public async Task<List<UserShifts>> SearchUserShiftsByDate(int? day, int? month, int? year)
+        public List<UserShifts> SearchUserShiftsByDate(int? day, int? month, int? year)
         {
-            return await _userShiftRepository.SearchUserShiftsByDate(day, month, year);
+            return _userShiftRepository.SearchUserShiftsByDate(day, month, year);
         }
 
-        public async Task<UserShifts?> GetUserShiftById(int id)
+        public UserShifts? GetUserShiftById(int id)
         {
-            return await _userShiftRepository.GetUserShiftById(id);
+            return _userShiftRepository.GetUserShiftById(id);
         }
 
-        public async Task AddUserShift(UserShifts userShift)
+        public void AddUserShift(UserShifts userShift)
         {
-            await _userShiftRepository.AddUserShift(userShift);
+            _userShiftRepository.AddUserShift(userShift);
         }
 
-        public async Task UpdateUserShift(UserShifts userShift)
+        public void UpdateUserShift(UserShifts userShift)
         {
-            await _userShiftRepository.UpdateUserShift(userShift);
+            _userShiftRepository.UpdateUserShift(userShift);
         }
 
-        public async Task DeleteUserShift(int id)
+        public void DeleteUserShift(int id)
         {
-            await _userShiftRepository.DeleteUserShift(id);
+            _userShiftRepository.DeleteUserShift(id);
         }
     }
-} 
+}

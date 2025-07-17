@@ -2,7 +2,6 @@ using DataAccessObject;
 using Models;
 using Repositories.Interfaces;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace Repositories.Repositories
 {
@@ -15,29 +14,29 @@ namespace Repositories.Repositories
             _userDAO = new UserDAO();
         }
 
-        public async Task<List<Users>> GetAllUsers()
+        public List<Users> GetAllUsers()
         {
-            return await _userDAO.GetAllUsers();
+            return _userDAO.GetAllUsers();
         }
 
-        public async Task<Users?> GetUserById(int id)
+        public Users? GetUserById(int id)
         {
-            return await _userDAO.GetUserById(id);
+            return _userDAO.GetUserById(id);
         }
 
-        public async Task AddUser(Users user)
+        public void AddUser(Users user)
         {
-            await _userDAO.AddUser(user);
+            _userDAO.AddUser(user);
         }
 
-        public async Task UpdateUser(Users user)
+        public void UpdateUser(Users user)
         {
-            await _userDAO.UpdateUser(user);
+            _userDAO.UpdateUser(user);
         }
 
-        public async Task DeleteUser(int id)
+        public void DeleteUser(int id)
         {
-            await _userDAO.DeleteUser(id);
+            _userDAO.DeleteUser(id);
         }
     }
-} 
+}

@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Models;
 using System.Collections.Generic;
-using System.Threading.Tasks;
+using System.Linq;
 
 namespace DataAccessObject
 {
@@ -14,36 +14,36 @@ namespace DataAccessObject
             _context = new FastFoodDbContext();
         }
 
-        public async Task<List<Users>> GetAllUsers()
+        public List<Users> GetAllUsers()
         {
-            return await _context.Users.ToListAsync();
+            return _context.Users.ToList();
         }
 
-        public async Task<Users?> GetUserById(int id)
+        public Users? GetUserById(int id)
         {
-            return await _context.Users.FindAsync(id);
+            return _context.Users.Find(id);
         }
 
-        public async Task AddUser(Users user)
+        public void AddUser(Users user)
         {
             _context.Users.Add(user);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
-        public async Task UpdateUser(Users user)
+        public void UpdateUser(Users user)
         {
             _context.Users.Update(user);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
-        public async Task DeleteUser(int id)
+        public void DeleteUser(int id)
         {
-            var user = await _context.Users.FindAsync(id);
+            var user = _context.Users.Find(id);
             if (user != null)
             {
                 _context.Users.Remove(user);
-                await _context.SaveChangesAsync();
+                _context.SaveChanges();
             }
         }
     }
-} 
+}

@@ -63,7 +63,7 @@ namespace View
             // --- DEBUGGING END ---
         }
 
-        private async void BtnUpdate_Click(object sender, RoutedEventArgs e)
+        private void BtnUpdate_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -123,8 +123,8 @@ namespace View
                     return;
                 }
 
-                await _shiftService.UpdateShift(CurrentShift);
-                await _userShiftService.UpdateUserShift(CurrentUserShift);
+                _shiftService.UpdateShift(CurrentShift);
+                _userShiftService.UpdateUserShift(CurrentUserShift);
                 this.DialogResult = true;
                 this.Close();
             }
@@ -140,4 +140,4 @@ namespace View
             }
         }
     }
-} 
+}

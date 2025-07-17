@@ -2,7 +2,6 @@ using DataAccessObject;
 using Models;
 using Repositories.Interfaces;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace Repositories.Repositories
 {
@@ -15,29 +14,29 @@ namespace Repositories.Repositories
             _shiftDAO = new ShiftDAO();
         }
 
-        public async Task<List<Shifts>> GetAllShifts()
+        public List<Shifts> GetAllShifts()
         {
-            return await _shiftDAO.GetAllShifts();
+            return _shiftDAO.GetAllShifts();
         }
 
-        public async Task<Shifts?> GetShiftById(int id)
+        public Shifts? GetShiftById(int id)
         {
-            return await _shiftDAO.GetShiftById(id);
+            return _shiftDAO.GetShiftById(id);
         }
 
-        public async Task AddShift(Shifts shift)
+        public void AddShift(Shifts shift)
         {
-            await _shiftDAO.AddShift(shift);
+            _shiftDAO.AddShift(shift);
         }
 
-        public async Task UpdateShift(Shifts shift)
+        public void UpdateShift(Shifts shift)
         {
-            await _shiftDAO.UpdateShift(shift);
+            _shiftDAO.UpdateShift(shift);
         }
 
-        public async Task DeleteShift(int id)
+        public void DeleteShift(int id)
         {
-            await _shiftDAO.DeleteShift(id);
+            _shiftDAO.DeleteShift(id);
         }
     }
-} 
+}
