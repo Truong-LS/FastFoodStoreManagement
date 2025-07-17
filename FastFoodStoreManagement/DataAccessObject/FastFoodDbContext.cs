@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using Models;
 
-namespace Models;
+namespace DataAccessObject;
 
 public partial class FastFoodDbContext : DbContext
 {
@@ -61,7 +62,7 @@ public partial class FastFoodDbContext : DbContext
         {
             entity.HasKey(e => e.DiscountId).HasName("PK__Discount__E43F6D9629B5FACF");
 
-            entity.Property(e => e.DiscountId).ValueGeneratedNever();
+            entity.Property(e => e.DiscountId).ValueGeneratedOnAdd();
             entity.Property(e => e.Code)
                 .HasMaxLength(20)
                 .IsUnicode(false);

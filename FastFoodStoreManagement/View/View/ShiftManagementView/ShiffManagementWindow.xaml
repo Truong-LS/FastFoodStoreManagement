@@ -1,0 +1,88 @@
+﻿<UserControl x:Class="View.ShiffManagementWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:View"
+        mc:Ignorable="d"
+        Height="550" Width="1000">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <!-- 2) Bộ lọc ngày tháng -->
+        <StackPanel Orientation="Horizontal" Margin="0,7,0,43" HorizontalAlignment="Center">
+            <!-- ComboBox NGÀY -->
+            <ComboBox x:Name="cmbDay" Width="150" Height="30" Margin="0,0,10,0"
+                      ItemsSource="{Binding DaysList}"
+                      SelectedIndex="0">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+            <!-- ComboBox THÁNG -->
+            <ComboBox x:Name="cmbMonth" Width="150" Height="30" Margin="0,0,10,0"
+                      ItemsSource="{Binding MonthsList}"
+                      SelectedIndex="0">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+            <!-- ComboBox NĂM -->
+            <ComboBox x:Name="cmbYear" Width="150" Height="30"
+                      ItemsSource="{Binding YearsList}"
+                      SelectedIndex="0">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+            <Button Content="Search" Width="100" Height="30" Margin="10,0,0,0" Click="Search_Click"/>
+            <Button Content="Reset Search" Width="100" Height="30" Margin="10,0,0,0" Click="ResetSearch_Click"/>
+        </StackPanel>
+
+        <!-- 3) DataGrid hiển thị nhân viên -->
+        <DataGrid Margin="20,62,20,103" AutoGenerateColumns="False" CanUserAddRows="False"
+                  ItemsSource="{Binding UserShiftsList}" Grid.RowSpan="3">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Mã Ca NV" Binding="{Binding UserShiftId}" Width="100"/>
+                <DataGridTextColumn Header="Tên NV" Binding="{Binding User.FullName}" Width="*"/>
+                <DataGridTextColumn Header="Ca làm" Binding="{Binding Shift.Name}" Width="*"/>
+                <DataGridTextColumn Header="Giờ bắt đầu" Binding="{Binding Shift.StartTime, StringFormat='{}{0:HH:mm}'}" Width="100"/>
+                <DataGridTextColumn Header="Giờ kết thúc" Binding="{Binding Shift.EndTime, StringFormat='{}{0:HH:mm}'}" Width="100"/>
+                <DataGridTextColumn Header="Ngày Làm" Binding="{Binding WorkDate, StringFormat='{}{0:dd/MM/yyyy}'}" Width="120"/>
+                <DataGridTextColumn Header="Check In" Binding="{Binding CheckIn, StringFormat='{}{0:HH:mm}'}" Width="100"/>
+                <DataGridTextColumn Header="Check Out" Binding="{Binding CheckOut, StringFormat='{}{0:HH:mm}'}" Width="120"/>
+                <DataGridTemplateColumn Header="">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Content="Edit" Width="60" Height="25" Margin="0,0,5,0"
+                                    Click="EditUserShift_Click"/>
+                                <Button Content="Delete" Width="60" Height="25"
+                                    Click="DeleteUserShift_Click"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- 4) Nút Create -->
+        <Button Grid.Row="2" Content="Create" Width="100" Height="35" Margin="20,397,0,38"
+        HorizontalAlignment="Left"
+        Click="Create_Click"/>
+    </Grid>
+</UserControl>
