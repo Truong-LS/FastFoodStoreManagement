@@ -5,26 +5,26 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:View.ManagerView.Control"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800" Background="Orange">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <!-- Dòng chứa 2 ô DatePicker -->
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
             <!-- Nút Create -->
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <!-- Thêm 2 ô chọn ngày ở hàng 1 -->
-        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left" Margin="10">
-            <StackPanel Orientation="Vertical" Margin="0,0,20,0">
-                <TextBlock Text="From Date:" FontWeight="Bold" Margin="0,0,0,5"/>
-                <DatePicker Name="FromDatePicker" Width="150"/>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10" >
+            <StackPanel Orientation="Vertical" Margin="0,0,200,0">
+                <TextBlock Text="From Date:" FontWeight="Bold" Margin="0,0,0,5" HorizontalAlignment="Center"/>
+                <DatePicker Name="FromDatePicker" Width="150" HorizontalAlignment="Center"/>
             </StackPanel>
-            <StackPanel Orientation="Vertical">
-                <TextBlock Text="To Date:" FontWeight="Bold" Margin="0,0,0,5"/>
-                <DatePicker Name="ToDatePicker" Width="150"/>
+            <StackPanel Orientation="Vertical" >
+                <TextBlock Text="To Date:" FontWeight="Bold" Margin="0,0,0,5" HorizontalAlignment="Center"/>
+                <DatePicker Name="ToDatePicker" Width="150" HorizontalAlignment="Center"/>
             </StackPanel>
         </StackPanel>
 
@@ -74,7 +74,70 @@
 
         <!-- Nút Create ở hàng 3 -->
         <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Left" Margin="10">
-            <Button Content="Create" Width="70" Height="35" Click="CreateButton_Click"/>
+            <Button Content="Create" Width="70" Height="35" Click="OpenPopup_Click"/>
         </StackPanel>
+
+        <!-- Popup -->
+        <Popup x:Name="CreatePopup"
+           IsOpen="False"
+           StaysOpen="False"
+           Placement="Center"
+           AllowsTransparency="True"
+           PopupAnimation="Fade">
+            <Border Background="White" BorderBrush="Black" BorderThickness="1" Padding="20" CornerRadius="10" Width="400">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Form -->
+                    <Grid Margin="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="Product ID:" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="0,5"/>
+                        <TextBox x:Name="ProductIdTextBox" Grid.Row="0" Grid.Column="1" Width="200" Margin="0,5"/>
+
+                        <TextBlock Text="Product Name:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="0,5"/>
+                        <TextBox x:Name="ProductNameTextBox" Grid.Row="1" Grid.Column="1" Width="200" Margin="0,5"/>
+
+                        <TextBlock Text="Value:" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="0,5"/>
+                        <TextBox x:Name="ValueTextBox" Grid.Row="2" Grid.Column="1" Width="200" Margin="0,5"/>
+
+                        <TextBlock Text="Unit:" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Margin="0,5"/>
+                        <TextBox x:Name="UnitTextBox" Grid.Row="3" Grid.Column="1" Width="200" Margin="0,5"/>
+
+                        <TextBlock Text="Entry Date:" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" Margin="0,5"/>
+                        <DatePicker x:Name="EntryDatePicker" Grid.Row="4" Grid.Column="1" Width="200" Margin="0,5"/>
+
+                        <TextBlock Text="Log Type:" Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" Margin="0,5"/>
+                        <TextBox x:Name="LogTypeTextBox" Grid.Row="5" Grid.Column="1" Width="200" Margin="0,5"/>
+
+                        <TextBlock Text="Supplier:" Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" Margin="0,5"/>
+                        <TextBox x:Name="SupplierTextBox" Grid.Row="6" Grid.Column="1" Width="200" Margin="0,5"/>
+                    </Grid>
+
+                    <!-- Buttons -->
+                    <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
+                        <Button Content="Save" Width="100" Margin="5" Click="SaveButton_Click"/>
+                        <Button Content="Cancel" Width="100" Margin="5" Click="CancelButton_Click"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </Popup>
     </Grid>
+    
+    
 </UserControl>

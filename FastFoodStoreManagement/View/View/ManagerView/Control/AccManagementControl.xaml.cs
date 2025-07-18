@@ -10,29 +10,21 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace View.ManagerView.Control
 {
     /// <summary>
-    /// Interaction logic for CreateStockInWindow.xaml
+    /// Interaction logic for AccManagementControl.xaml
     /// </summary>
-    public partial class CreateStockInWindow : Window
+    public partial class AccountManagement : UserControl
     {
-        public CreateStockInWindow()
+        public AccManagementControl()
         {
             InitializeComponent();
         }
 
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.DialogResult = false;
-            this.Close();
-        }
+       
     }
 }
