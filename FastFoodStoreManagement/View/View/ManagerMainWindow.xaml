@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:View"
         xmlns:couponView="clr-namespace:View"
         mc:Ignorable="d"
-        Title="Manager Dashboard" Height="650" Width="1100"
+        Title="Manager Dashboard" Height="650" Width="1115"
         WindowStartupLocation="CenterScreen">
     <Grid Background="White">
         <Grid.RowDefinitions>
@@ -45,7 +45,7 @@
         </Grid>
 
         <!-- Content Area -->
-        <ContentControl x:Name="MainContent" Grid.Row="1" Margin="10"/>
+        <ContentControl x:Name="MainContent" Grid.Row="1"/>
     </Grid>
     <Window.Resources>
         <Style x:Key="MenuButtonStyle" TargetType="Button">
